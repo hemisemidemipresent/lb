@@ -19,8 +19,6 @@ function requestShit(raceID) {
             let cell2 = row.insertCell(2);
             let cell3 = row.insertCell(3);
             let cell4 = row.insertCell(4);
-            let cell5 = row.insertCell(5);
-            let cell6 = row.insertCell(6);
 
             let person = scores[i];
             let time = 1000000000 - person.score;
@@ -42,28 +40,60 @@ function requestShit(raceID) {
                 't50%',
                 't75%',
             ];
+            const medallinks = [
+                'https://i.imgur.com/a7BrnTJ.png',
+                'https://i.imgur.com/crZyI0A.png',
+                'https://i.imgur.com/fBYmsyC.png',
+                'https://i.imgur.com/jrG9J9C.png',
+                'https://i.imgur.com/yosel2O.png',
+                'https://i.imgur.com/PBxqDJ2.png',
+                'https://i.imgur.com/CrBWY7u.png',
+                'https://i.imgur.com/OmyPoJA.png',
+                'https://i.imgur.com/esTrQPz.png',
+            ];
             for (let j = 2; j < md.length; j++) {
                 if (md[j] == 0) continue;
                 else {
-                    medals.push([medalnames[j], [md[j]]]);
+                    medals.push({
+                        name: medalnames[j - 2],
+                        number: md[j],
+                        img: medallinks[j - 2],
+                    });
                 }
             }
-            let medal0;
-            let medal1;
-            let medal2;
-            if (!medals[0]) medal0 = '-';
-            else medal0 = medals[0].join(' ');
-            if (!medals[1]) medal1 = '-';
-            else medal1 = medals[1].join(' ');
-            if (!medals[2]) medal2 = '-';
-            else medal2 = medals[2].join(' ');
+            if (!medals[0]) {
+                medals[0] = {
+                    name: 'none',
+                    number: '-',
+                    img:
+                        'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png',
+                };
+            }
+            if (!medals[1]) {
+                medals[1] = {
+                    name: 'none',
+                    number: '-',
+                    img:
+                        'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png',
+                };
+            }
+            if (!medals[2]) {
+                medals[2] = {
+                    name: 'none',
+                    number: '-',
+                    img:
+                        'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png',
+                };
+            }
+            console.log(medals[2]);
             cell0.innerHTML = i + 1;
             cell1.innerHTML = username;
             cell2.innerHTML = time;
-            cell3.innerHTML = medal0;
-            cell4.innerHTML = medal1;
-            cell5.innerHTML = medal2;
-            cell6.innerHTML = level;
+            cell3.innerHTML =
+                `<div class= 'medal-info-container'><div class = 'img-container'><img class = 'medal' src="${medals[0].img}" alt="${medals[0].name}"></div><p>${medals[0].number}</p>` +
+                `<div class = 'img-container'><img class = 'medal' src="${medals[1].img}" alt="${medals[1].name}"></div><p>${medals[1].number}</p>` +
+                `<div class = 'img-container'><img class = 'medal' src="${medals[2].img}" alt="${medals[2].name}"></div><p>${medals[2].number}</p></div>`;
+            cell4.innerHTML = level;
         }
     };
 }
