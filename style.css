@@ -1,6 +1,6 @@
 body {
-    color: white;
-    background-color: black;
+    color: rgb(219, 219, 219);
+    background-color: rgb(15, 17, 24);
     margin: 0;
     padding: 0;
   }
@@ -21,4 +21,7 @@ body {
    max-width: 25px;
    align-self: center ;
 
+ }
+ a{
+   color: cadetblue;
  }
