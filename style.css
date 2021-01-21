@@ -122,3 +122,10 @@ a{
   }
   
 }
+
+button{
+  border-radius: 0.5rem;
+  background-color: #8de6d5;
+  border: 1px solid #606060;
+  padding: 0.25rem;
+}
