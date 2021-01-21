@@ -17,24 +17,34 @@
 </head>
 
 <body>
-    <h2>btd6 race leaderboard loader by hemidemise...</h2>
-    <p>yeah seriously I didnt have time to add fancy colours or effects or other stuff <a
-            href="https://github.com/hemisemidemipresent/lb">Github source code so you can make this better</a></p>
-    <p>"Powered" by <a href="cq.netlify.app">Cyber Quincy Discord Bot</a></p>
-    <p>Dont mind the double lb, idk what was going on</p>
-    <br>
+    <main>
+        <section class='glass'>
+            <section id='text-container'>
+                <h1>btd6 race leaderboard loader</h1>
+                <section class='island'>
+                    <p>by hemisemidemipresent</p>
+                    <p><a href="https://github.com/hemisemidemipresent/lb">Github source code so you can make this
+                            better</a></p>
+                    <p>"Powered" by <a href="cq.netlify.app">Cyber Quincy Discord Bot</a></p>
+                    <button type="button" onclick="loadCurrentLB();">Load Current LB</button>
 
-    <input type="text" placeholder="key in race id" id="input">
-    <button type="button" onclick="loadLB();">Load LB</button>
+                    <input type="text" placeholder="key in race id" id="input">
+                    <button type="button" onclick="loadLB();">Load LB using id</button>
 
-    <table id='tayble'>
-        <th>
-        <td>name</td>
-        <td>time</td>
-        <td>medals</td>
-        <td>level</td>
-        </th>
-    </table>
+                </section>
+
+                <table id='tayble'>
+                    <th>
+                    <td id='toHide1'>name</td>
+                    <td id='toHide2'>time</td>
+                    <td id='toHide3'>medals</td>
+                    <td id='toHide4'>level</td>
+                    </th>
+                </table>
+
+            </section>
+        </section>
+    </main>
 
 
 </body>

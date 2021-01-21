@@ -1,27 +1,114 @@
 body {
-    color: rgb(219, 219, 219);
-    background-color: rgb(15, 17, 24);
-    margin: 0;
-    padding: 0;
-  }
-  
- td{
-   font-family: 'Luckiest Guy';
- }
+	color: black;
+	margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+h1 {
+  color: #426696;
+  font-weight: 600;
+  font-size: 3rem;
+  opacity: 0.8;
+}
+h2,
+p,td {
+  color: #658ec6;
+  font-weight: 500;
+  opacity: 0.8;
+  font-size: 1.2rem;
+}
+td {
+  margin: 0;
+  max-height: 1rem;
+  padding: 0;
+}
+.medal-number, td{
+  color:rgba(0, 5, 0, 0.5);
 
- 
- .medal-info-container{
-   display: inline-flex;
- }
- .img-container{
+}
 
+.medal-info-container {
   display: inline-flex;
- }
- .medal{
-   max-width: 25px;
-   align-self: center ;
+  max-height: 2rem;
+  justify-content: center;
+  align-items: center;
+}
 
- }
- a{
-   color: cadetblue;
- }
+
+
+.medal {
+	max-width: 25px;
+	align-self: center;
+}
+
+
+main {
+	min-height: 100vh;
+	background: linear-gradient(to right top, #60cab7, #66e8fb);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.glass {
+  height: 80vh;
+	
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+  border-radius: 2rem;
+  
+  overflow: scroll;
+
+}
+#toHide1, #toHide2, #toHide3, #toHide4{
+  visibility: hidden;
+}
+#text-container{
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+}
+.medal-number{
+  max-height: 2rem;
+  margin-right: 0.2rem;
+  
+}
+/*remove scrollbars*/
+
+/*chrome safari opera*/
+.glass::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge and Firefox */
+.glass {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/*chrome safari opera*/
+.glass::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge and Firefox */
+.glass {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.island{
+  margin-left: 1rem;  margin-right: 1rem;margin-bottom: 1rem;
+  border-radius: 2rem;
+  padding: 1rem;
+background: white;
+}
+
+a{
+  text-decoration: none;
+  color:#22c79e;
+}
+@media only screen and (max-width: 600px) {
+  .glass{
+    width: 90%;
+  }
+}
