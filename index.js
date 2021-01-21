@@ -147,11 +147,12 @@ function main(body) {
             `<p class = 'medal-number'>${medals[2].number}</p>` +
             `</div>`;
         cell4.innerHTML = level;
-        if (level !== '155') {
-            cell4.style.color = '#658ec6';
+        if (level === '155') {
+            cell4.style.color = '#0bc30b';
         }
     }
 }
 function loadCurrentLB() {
     requestShit(CURRENTRACEID);
+    showStuff();
 }
