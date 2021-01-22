@@ -12,10 +12,16 @@ fork the repository
 
 edit the
 ```js
-const CURRENTRACEID = 'Moon_Guardian_kjxm9235';
-``` to
+const CURRENTRACEID = 'AlternateFlow_kk7r1qa4';
+``` 
+to
+
 ```js
 const CURRENTRACEID = 'newraceid';
 ```
 
 create pull request
+
+## messy js file
+
+it shouldnt be too hard to stack trace

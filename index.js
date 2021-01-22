@@ -1,5 +1,5 @@
 /*FOR THOSE PEOPLE UPDATING LB*/
-const CURRENTRACEID = 'Moon_Guardian_kjxm9235';
+const CURRENTRACEID = 'AlternateFlow_kk7r1qa4';
 
 const medalnames = [
     '1st',
