@@ -5,14 +5,14 @@ body {
   font-family: Montserrat, sans-serif;
 }
 h1 {
-  color: #426696;
+  color: #ffffff;
   font-weight: 600;
   font-size: 3rem;
   opacity: 0.8;
 }
 h2,
 p,td {
-  color: #658ec6;
+  color: whitesmoke;
   font-weight: 500;
   opacity: 0.8;
   font-size: 1.2rem;
@@ -23,10 +23,14 @@ td {
   padding: 0;
 }
 .medal-number, td{
-  color:#426696;
+  color:#ffffff;
 
 }
-
+tr,table{
+  background-color:#4c4c4c; 
+  border:1px solid #4c4c4c;
+  border-collapse: collapse;
+}
 .medal-info-container {
   display: inline-flex;
   max-height: 2rem;
@@ -44,7 +48,7 @@ td {
 
 main {
 	min-height: 100vh;
-	background: linear-gradient(to right top, #60cab7, #66e8fb);
+	background: #333333;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -53,7 +57,7 @@ main {
 .glass {
   height: 80vh;
 	
-  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+  background: #404040;
   border-radius: 2rem;
   
   overflow: scroll;
@@ -130,22 +134,3 @@ button{
   padding: 0.25rem;
 }
 
-.snowflake{
-  position: absolute;
-}
-#snowflakeContainer {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  display: none;
-}
-
-
-
-.snowflake {
-  position: fixed;
-  user-select: none;
-  z-index: 1000;
-  pointer-events: none;
-  
-}

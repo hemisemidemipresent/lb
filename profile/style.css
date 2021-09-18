@@ -12,7 +12,7 @@ h1 {
 }
 h2,
 p,td {
-  color: #658ec6;
+  color: #ffffff;
   font-weight: 500;
   opacity: 0.8;
   font-size: 1.2rem;
@@ -44,7 +44,7 @@ td {
 
 main {
 	min-height: 100vh;
-	background: linear-gradient(to right top, #60cab7, #66e8fb);
+	background: #404040;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -53,7 +53,7 @@ main {
 .glass {
   height: 80vh;
 	
-  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+  background: #404040;
   border-radius: 2rem;
   
   overflow: scroll;

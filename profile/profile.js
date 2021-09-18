@@ -26,3 +26,15 @@ function load() {
         }
     };
 }
+const axios = require('axios').default;
+axios({
+    method: 'get',
+    url: 'https://priority-static-api.nkstatic.com/storage/static/11/5974fbce7075aac90a132aed/public-stats',
+    headers: { 'User-Agent': 'btd6-windowsplayer-27.3' },
+})
+    .then(function (res) {
+        console.log(JSON.parse(JSON.stringify(res.data)));
+    })
+    .catch(function (error) {
+        console.log(error);
+    });

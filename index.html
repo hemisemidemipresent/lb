@@ -12,44 +12,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LB</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
     <main>
+        <section id='text-container'>
+            <h1>btd6 race leaderboard loader</h1>
+
+            <p>by hemisemidemipresent</p>
+            <p><a href="https://github.com/hemisemidemipresent/lb">Github source code so you can make this
+                    better</a></p>
+            <p>"Powered" by <a href="https://cq.netlify.app">Cyber Quincy Discord Bot</a></p>
+            <button type="button" onclick="loadCurrentLB();">Load Current LB</button>
+            <br><br>
+            <input type="text" placeholder="key in race id" id="input">
+            <button type="button" onclick="loadLB();">Load LB using id</button>
 
 
 
+            <table id='tayble'>
+                <th>
+                <td>position</td>
+                <td>name</td>
+                <td>time</td>
+                <td>medals</td>
+                <td>level</td>
+                <td>user id</td>
+                <td>timestamp</td>
 
+                </th>
+            </table>
 
-        <section class='glass'>
-            <section id='text-container'>
-                <h1>btd6 race leaderboard loader</h1>
-                <section class='island'>
-                    <p>by hemisemidemipresent</p>
-                    <p><a href="https://github.com/hemisemidemipresent/lb">Github source code so you can make this
-                            better</a></p>
-                    <p>"Powered" by <a href="https://cq.netlify.app">Cyber Quincy Discord Bot</a></p>
-                    <button type="button" onclick="loadCurrentLB();">Load Current LB</button>
-                    <br><br>
-                    <input type="text" placeholder="key in race id" id="input">
-                    <button type="button" onclick="loadLB();">Load LB using id</button>
-
-                </section>
-
-                <table id='tayble'>
-                    <th>
-                    <td id='toHide1'>name</td>
-                    <td id='toHide2'>time</td>
-                    <td id='toHide3'>medals</td>
-                    <td id='toHide4'>level</td>
-                    </th>
-                </table>
-
-            </section>
         </section>
 
     </main>

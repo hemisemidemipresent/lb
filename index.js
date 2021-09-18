@@ -25,26 +25,16 @@ const medallinks = [
 ];
 
 // this function is the "main" function
-function requestShit(raceID) {
-    const Http = new XMLHttpRequest();
+async function requestShit(raceID) {
     const url = `https://priority-static-api.nkstatic.com/storage/static/appdocs/11/leaderboards/Race_${raceID}.json`;
-    Http.open('GET', url);
-    Http.send();
-
-    Http.onreadystatechange = (e) => {
-        let state = Http.readyState;
-        console.log('yes:' + state);
-        if (state == 4) {
-            let body = Http.responseText;
-            main(body);
-        }
-    };
+    let body = await axios.get(url);
+    return body;
 }
-function loadLB() {
+async function loadLB() {
     let raceID = document.getElementById('input').value;
 
-    requestShit(raceID);
-    showStuff();
+    let body = await requestShit(raceID);
+    main(body);
 }
 function parseTime(ms) {
     let milliseconds = ms % 1000;
@@ -56,35 +46,22 @@ function parseTime(ms) {
     milliseconds = milliseconds < 100 ? '0' + milliseconds : milliseconds;
     return minutes + ':' + seconds + '.' + milliseconds;
 }
-function showStuff() {
-    // hardcoded
-    let title1 = document.getElementById('toHide1');
-    let title2 = document.getElementById('toHide2');
-    let title3 = document.getElementById('toHide3');
-    let title4 = document.getElementById('toHide4');
-    showElement(title1);
-    showElement(title2);
-    showElement(title3);
-    showElement(title4);
-}
-function showElement(element) {
-    element.style.visibility = 'visible';
-}
+
 function main(body) {
     let table = document.getElementById('tayble');
-
-    let data = JSON.parse(JSON.parse(body).data); // Ninja Kiwi is really weird, putting json data in a string in a json data
+    let data = JSON.parse(JSON.parse(body.data).data); // Ninja Kiwi is really weird, putting json data in a string in a json data
 
     let scores = data.scores.equal;
 
     for (let i = 0; i < 100; i++) {
         let row = table.insertRow();
-
         let cell0 = row.insertCell(0);
         let cell1 = row.insertCell(1);
         let cell2 = row.insertCell(2);
         let cell3 = row.insertCell(3);
         let cell4 = row.insertCell(4);
+        let cell5 = row.insertCell(5);
+        let cell6 = row.insertCell(6);
 
         let person = scores[i];
         let time = 1000000000 - person.score; // also how ninja kiwi works
@@ -92,49 +69,25 @@ function main(body) {
         time = parseTime(time);
 
         let md = person.metadata.split(',');
+        if (person.metadata.includes('timestamp')) {
+            let r = person.metadata.split(';');
+            md = r[0].split(',');
+        }
+
         let username = md[0];
+        if (!md[0]) username = '???';
         let level = md[1];
-        let medals = [];
-
-        for (let j = 2; j < md.length; j++) {
-            if (md[j] == 0) continue;
-            else {
-                medals.push({
-                    name: medalnames[j - 2],
-                    number: md[j],
-                    img: medallinks[j - 2],
-                });
-            }
+        if (!md[1]) level = '???';
+        let medalstr = '???';
+        if (md) medalstr = formatMedals(md);
+        let timestamp = '-';
+        if (person.metadata.includes('timestamp')) {
+            let newMetadata = person.metadata.split(',');
+            timestamp = new Date(md[11]).toISOString();
         }
 
-        // a bit brain dead moment
-        if (!medals[0]) {
-            medals[0] = {
-                name: 'none',
-                number: '-',
-                img:
-                    'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png',
-            };
-        }
-        if (!medals[1]) {
-            medals[1] = {
-                name: 'none',
-                number: '-',
-                img:
-                    'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png',
-            };
-        }
-        if (!medals[2]) {
-            medals[2] = {
-                name: 'none',
-                number: '-',
-                img:
-                    'https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png',
-            };
-        }
-
-        cell0.innerHTML = i + 1;
-        cell1.innerHTML = username;
+        cell0.innerHTML = i + 1; // position
+        cell1.innerHTML = username; // username
         cell2.innerHTML = time;
         // oh god
         cell3.innerHTML =
@@ -154,5 +107,31 @@ function main(body) {
 }
 function loadCurrentLB() {
     requestShit(CURRENTRACEID);
-    showStuff();
+}
+function formatMedals(md) {
+    let res;
+    if (md.length < 11)
+        res = [
+            `① : ${md[2]}`,
+            `② : ${md[3]}`,
+            `③ : ${md[4]}`,
+            `⓵ : ${md[5]}`,
+            `⓾ : ${md[6]}`,
+            `㉕ : ${md[7]}`,
+            `㊿ : ${md[8]}`,
+            `㉎ : ${md[9]}`,
+        ];
+    else
+        res = [
+            `① : ${md[2]}`,
+            `② : ${md[3]}`,
+            `③ : ${md[4]}`,
+            `㊿ : ${md[5]}`,
+            `⓵ : ${md[6]}`,
+            `⓾ : ${md[7]}`,
+            `㉕ : ${md[8]}`,
+            `㊿ : ${md[9]}`,
+            `㉎ : ${md[10]}`,
+        ];
+    return res.join(' | ');
 }
