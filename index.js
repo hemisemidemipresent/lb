@@ -34,7 +34,7 @@ async function loadLB() {
     let raceID = document.getElementById('input').value;
 
     let body = await requestShit(raceID);
-    console.log(body);
+    console.log(body.data);
     main(body);
 }
 function parseTime(ms) {
