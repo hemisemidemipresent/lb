@@ -1,28 +1,5 @@
 /*FOR THOSE PEOPLE UPDATING LB*/
-const CURRENTRACEID = 'AlternateFlow_kk7r1qa4';
-
-const medalnames = [
-    '1st',
-    '2nd',
-    '3rd',
-    't50',
-    't1%',
-    't10%',
-    't25%',
-    't50%',
-    't75%',
-];
-const medallinks = [
-    'https://i.imgur.com/a7BrnTJ.png',
-    'https://i.imgur.com/crZyI0A.png',
-    'https://i.imgur.com/fBYmsyC.png',
-    'https://i.imgur.com/jrG9J9C.png',
-    'https://i.imgur.com/yosel2O.png',
-    'https://i.imgur.com/PBxqDJ2.png',
-    'https://i.imgur.com/CrBWY7u.png',
-    'https://i.imgur.com/OmyPoJA.png',
-    'https://i.imgur.com/esTrQPz.png',
-];
+const CURRENTRACEID = 'Pondering_Pat_ktnvfjkz';
 
 // this function is the "main" function
 async function requestShit(raceID) {
@@ -34,7 +11,6 @@ async function loadLB() {
     let raceID = document.getElementById('input').value;
 
     let body = await requestShit(raceID);
-    console.log(body.data);
     main(body);
 }
 function parseTime(ms) {
@@ -50,8 +26,8 @@ function parseTime(ms) {
 
 function main(body) {
     let table = document.getElementById('tayble');
-    let data = JSON.parse(JSON.parse(body.data).data); // Ninja Kiwi is really weird, putting json data in a string in a json data
-
+    let data = JSON.parse(body.data.data); // Ninja Kiwi is really weird, putting json data in a string in a json data
+    console.log(JSON.stringify(data, null, 1));
     let scores = data.scores.equal;
 
     for (let i = 0; i < 100; i++) {
@@ -84,26 +60,20 @@ function main(body) {
         let timestamp = '-';
         if (person.metadata.includes('timestamp')) {
             let newMetadata = person.metadata.split(',');
-            timestamp = new Date(newMetadata[11]).toISOString();
+            timestamp = new Date(parseInt(newMetadata[11])).toISOString();
         }
 
         cell0.innerHTML = i + 1; // position
         cell1.innerHTML = username; // username
         cell2.innerHTML = time;
         // oh god
-        cell3.innerHTML =
-            "<div class= 'medal-info-container'>" +
-            `<img class = 'medal' src="${medals[0].img}" alt="${medals[0].name}">` +
-            `<p class = 'medal-number'>${medals[0].number}</p>` +
-            `<img class = 'medal' src="${medals[1].img}" alt="${medals[1].name}">` +
-            `<p class = 'medal-number'>${medals[1].number}</p>` +
-            `<img class = 'medal' src="${medals[2].img}" alt="${medals[2].name}">` +
-            `<p class = 'medal-number'>${medals[2].number}</p>` +
-            `</div>`;
+        cell3.innerHTML = medalstr;
         cell4.innerHTML = level;
         if (level === '155') {
             cell4.style.color = '#0bc30b';
         }
+        cell5.innerHTML = person.userID;
+        cell6.innerHTML = timestamp;
     }
 }
 function loadCurrentLB() {
