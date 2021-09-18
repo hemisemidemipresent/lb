@@ -34,6 +34,7 @@ async function loadLB() {
     let raceID = document.getElementById('input').value;
 
     let body = await requestShit(raceID);
+    console.log(body);
     main(body);
 }
 function parseTime(ms) {
@@ -83,7 +84,7 @@ function main(body) {
         let timestamp = '-';
         if (person.metadata.includes('timestamp')) {
             let newMetadata = person.metadata.split(',');
-            timestamp = new Date(md[11]).toISOString();
+            timestamp = new Date(newMetadata[11]).toISOString();
         }
 
         cell0.innerHTML = i + 1; // position
