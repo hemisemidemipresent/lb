@@ -1,0 +1,7 @@
+GET https://priority-static-api.nkstatic.com/storage/static/11/6107c51b5899c16a68b596e4/public-stats
+Host: priority-static-api.nkstatic.com
+Accept: */*
+Accept-Encoding: identity
+User-Agent: btd6-windowsplayer-27.3
+If-None-Match: "6526b673e088fc9370ee6ce0e8c03f6c"
+X-Unity-Version: 2019.4.22f1

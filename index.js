@@ -4,7 +4,15 @@ const CURRENTRACEID = 'Pondering_Pat_ktnvfjkz';
 // this function is the "main" function
 async function requestShit(raceID) {
     const url = `https://priority-static-api.nkstatic.com/storage/static/appdocs/11/leaderboards/Race_${raceID}.json`;
-    let body = await axios.get(url);
+    console.log(url);
+    let body = await axios.get(url, {
+        Host: 'priority-static-api.nkstatic.com',
+        Accept: '*/*',
+        'Accept-Encoding': 'identity',
+        'User-Agent': 'btd6-windowsplayer-27.3',
+        'If-None-Match': '6526b673e088fc9370ee6ce0e8c03f6c',
+        'X-Unity-Version': '2019.4.22f1',
+    });
     return body;
 }
 async function loadLB() {
@@ -56,11 +64,11 @@ function main(body) {
         let level = md[1];
         if (!md[1]) level = '???';
         let medalstr = '???';
-        if (md) medalstr = formatMedals(md);
+        if (md[2]) medalstr = formatMedals(md);
         let timestamp = '-';
         if (person.metadata.includes('timestamp')) {
             let newMetadata = person.metadata.split(',');
-            timestamp = new Date(parseInt(newMetadata[11])).toISOString();
+            timestamp = new Date(parseInt(newMetadata[11])).toString();
         }
 
         cell0.innerHTML = i + 1; // position
@@ -76,8 +84,9 @@ function main(body) {
         cell6.innerHTML = timestamp;
     }
 }
-function loadCurrentLB() {
-    requestShit(CURRENTRACEID);
+async function loadCurrentLB() {
+    let body = await requestShit(CURRENTRACEID);
+    main(body);
 }
 function formatMedals(md) {
     let res;

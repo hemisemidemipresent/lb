@@ -18,9 +18,9 @@ p,td {
   font-size: 1.2rem;
 }
 td {
-  margin: 0;
+  margin: 1;
   max-height: 1rem;
-  padding: 0;
+  padding: 0.5rem;
 }
 .medal-number, td{
   color:#ffffff;
