@@ -20,16 +20,18 @@ app.get('/', async (req, res) => {
     let data = JSON.parse(body.data.data);
     res.send(data);
     let date = new Date();
-    fs.writeFile(
-        `Race_${raceID}_${date
-            .toISOString()
-            .substr(0, 19)
-            .replace(/:/g, '-')}.json`,
-        JSON.stringify(data, null, 1),
-        function (err) {
-            if (err) throw err;
-        }
-    );
-    fs.file;
+    //console.log(data);
+    fs.readFile('./json.json', 'utf8', (err, dat) => {
+        if (err) console.log(err);
+        let json = JSON.parse(dat);
+        json.push(body.data.data);
+        fs.writeFile(
+            `json.json`,
+            JSON.stringify(json, null, 1),
+            function (err) {
+                if (err) throw err;
+            }
+        );
+    });
 });
 app.use('/', router);
