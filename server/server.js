@@ -13,7 +13,7 @@ const router = express.Router();
 app.listen(process.env.PORT || 3000, () => {
     console.log('listening');
 });
-const raceID = 'Bloons_Of_The_Corn';
+const raceID = 'ku7sesrm';
 const url = `https://priority-static-api.nkstatic.com/storage/static/appdocs/11/leaderboards/Race_${raceID}.json`;
 app.get('/', async (req, res) => {
     let body = await axios.get(url);
