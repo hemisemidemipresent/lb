@@ -58,7 +58,7 @@ function main(body) {
             let r = person.metadata.split(';');
             md = r[0].split(',');
         }
-
+        console.log(md);
         let username = md[0];
         if (!md[0]) username = '???';
         let level = md[1];
